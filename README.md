@@ -1,8 +1,4 @@
 ng-cra
 ======
 
-NG-CRA
-
-Tasks :
-
-https://trello.com/b/4XyWdS0t/ng-cra
+Fork from https://github.com/hadrienl/ng-cra
