@@ -1,0 +1,11 @@
+.DS_Store
+.idea
+*.ipr
+*.iws
+*.iml
+*.log
+node_modules
+dist
+.tmp
+.sass-cache
+app/bower_components

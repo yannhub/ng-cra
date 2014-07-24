@@ -1,0 +1,25 @@
+.header-title {
+  font-size: 25px;
+  line-height: 50px;
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+app-header .row {
+  margin: 0; 
+}
+app-footer {
+  position: fixed;
+  bottom: 0;
+  text-align: center;
+}
+.container .today {
+  font-size: 20px;
+  margin: 1em 0 0 0;
+}
+.container .today .btn {
+  font-size: 20px;
+}
+.container .today .buttons {
+  text-align: center;
+}

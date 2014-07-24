@@ -1,0 +1,14 @@
+<header>
+  <div  ng-if="user.uid"
+        class="row">
+    <p class="header-title col-xs-9">
+      Bonjour, {{ user.firstname || user.username }}
+    </p>
+    <p class="col-xs-3 text-right">
+      <a href="/logout">Logout</a>
+    </p>
+  </div>
+  <div ng-if="!user.uid">
+    <h1 class="header-title">NG-CRA</h1>
+  </div>
+</header>

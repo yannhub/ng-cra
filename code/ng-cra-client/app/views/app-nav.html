@@ -1,0 +1,7 @@
+<nav ng-if="user.uid">
+  <ul class="nav nav-tabs">
+    <li ng-class="{active: selected === 0}"><a href="/">Aujourd'hui</a></li>
+    <li ng-class="{active: selected === 1}"><a href="/calendar">Calendrier</a></li>
+    <li ng-class="{active: selected === 2}"><a href="/settings">Settings</a></li>
+  </ul>
+</nav>
