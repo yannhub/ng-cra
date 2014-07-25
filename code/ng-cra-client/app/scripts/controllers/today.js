@@ -5,6 +5,32 @@ angular.module('ngCraClientApp')
   .controller('TodayCtrl', function ($scope, Days, now, days, projects) {
     var A_DAY = 1000 * 60 * 60 * 24;
 
+    var findPreviousEmptyDay= function() {
+      $scope.previousday = $scope.getDay(
+        new Date(+$scope.day.date - A_DAY)
+      );
+      if ($scope.previousday.date.getMonth() !==
+        $scope.day.date.getMonth()) {
+        return  false;
+      }
+
+      if ($scope.previousday.morning &&
+        $scope.previousday.afternoon) {
+        $scope.day = $scope.previousday;
+        return findPreviousEmptyDay();
+      }
+
+      return true;
+    };
+
+    var goToPreviousEmptyDay = function() {
+      if(findPreviousEmptyDay()){
+        $scope.step = 5;
+      } else {
+        $scope.step = 6;
+      }
+    };
+
     $scope.projects = projects;
 
     $scope.getDay = function(date) {
@@ -45,7 +71,7 @@ angular.module('ngCraClientApp')
       $scope.afternoon = _.findWhere($scope.projects, {pid: $scope.day.afternoon});
 
       if ($scope.day.morning && $scope.day.afternoon) {
-        $scope.step = 7;
+        goToPreviousEmptyDay();
       } else
       if ($scope.getLastProject()) {
         $scope.step = 1;
@@ -98,27 +124,11 @@ angular.module('ngCraClientApp')
           .$save()
           .$promise
           .then(function() {
-            // Look for a previous day to complete
-            $scope.previousday = $scope.getDay(
-              new Date(+$scope.day.date - A_DAY)
-            );
-            if ($scope.previousday.date.getMonth() !==
-                  $scope.day.date.getMonth()) {
-              $scope.step = 6;
-              return;
-            }
-
-            if ($scope.previousday.morning &&
-                $scope.previousday.afternoon) {
-              $scope.step = 6;
-              return;
-            }
-
-            $scope.step = 5;
+            goToPreviousEmptyDay();
           })
           .catch(function(err) {
             // TODO : display err
-          });
+        });
       }
     };
     $scope.step5 = function(v) {
