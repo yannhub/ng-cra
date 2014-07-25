@@ -3,18 +3,17 @@
 angular.module('ngCraClientApp')
   .controller('CalendarCtrl', function ($scope, projects, days) {
     $scope.uiConfig = {
-      calendar:{
-        header:{
-          left: 'today, prev, next',
-          center: 'title',
-          right: 'month, agendaWeek'
+      calendar: {
+        header: {
+          left: '',
+          center: 'prev, title, next',
+          right: ''
         },
-        dayClick: $scope.alertEventOnClick,
-        eventDrop: $scope.alertOnDrop,
-        eventResize: $scope.alertOnResize
+        dayClick: function (date, allday, jsEvent, view) {
+//          debugger;
+        }
       }
     };
-
 
     $scope.activities = [];
 
